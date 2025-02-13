@@ -41,7 +41,7 @@ name('public.listing');
                     <h1 class="text-3xl font-bold">{{ $listing->title }}</h1>
                 </div>
                 <div>
-                  <div class="flex flex-wrap gap-x-4 text-sm">
+                  <div class="flex flex-wrap gap-4 text-sm">
                     @if($listing->categories)
                         @foreach($listing->categories as $category)
                             <div class="bg-gray-200 px-2 py-1 rounded-full text-xs font-medium text-gray-600">{{ $category }}</div>
@@ -68,7 +68,7 @@ name('public.listing');
                     
                 </div>
             </div>
-            <div class="flex flex gap-2">
+            <div class="flex flex-wrap gap-2">
                 @if($listing->pro)
                 @if($listing->phone)
                   <flux:button target="_blank" href="tel:{{ $listing->phone }}" icon="phone">Call</flux:button>
