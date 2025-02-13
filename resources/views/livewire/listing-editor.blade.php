@@ -330,7 +330,7 @@ $saveListingNotes = function(){
                                 <h4 @dblClick="editLocation = !editLocation" class="font-medium">Location</h4>
                                 <p x-show="!editLocation" class="text-gray-600">{{ $form->address }}</p>
                                 <div x-show="editLocation">
-                                    <gmpx-api-loader key="{{ env('GOOGLE_MAPS_KEY')}}" solution-channel="GMP_GE_placepicker_v2"></gmpx-api-loader>
+                                    <gmpx-api-loader key="{{ config('services.google.maps.key')}}" solution-channel="GMP_GE_placepicker_v2"></gmpx-api-loader>
                                     <div id="place-picker-box" class="mb-4">
                                         <div id="place-picker-container">
                                             <gmpx-place-picker placeholder="Enter an address" id="place-picker" style="width:100%"></gmpx-place-picker>
