@@ -9,7 +9,7 @@ use App\Actions\Auth\SendMagicLink;
 class LoginForm extends Form
 {
     #[Validate('required|email')]
-    public $email = 'ddeal@wellspring.marketing';
+    public $email = '';
 
     public function submit()
     {
