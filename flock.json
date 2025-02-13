@@ -1,0 +1,14 @@
+{
+    "commands": [
+        {
+            "name": "Vite Dev",
+            "command": "npm run dev",
+            "color": "#E9E3B4"
+        },
+        {
+            "name": "MailPit",
+            "command": "mailpit",
+            "color": "#F39B6D"
+        }
+    ]
+}
