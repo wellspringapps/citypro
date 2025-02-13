@@ -79,7 +79,7 @@
                                     <div class="-my-6 divide-y divide-gray-500/10">
                                         <div class="space-y-2 py-6">
                                             <a href="/search" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Searh Pros</a>
-                                            <a href="/claim" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Claim Your Listing</a>
+                                            <a href="/claim-listing" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Claim Your Listing</a>
                                         </div>
                                         <div class="py-6">
                                             @auth

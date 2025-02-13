@@ -431,8 +431,12 @@ $saveListingNotes = function(){
                     </div>
                 </flux:card>
             </div>
+
+            
             
         </div>
+
+        
         
         @if($listing->pro)
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
@@ -455,18 +459,31 @@ $saveListingNotes = function(){
             @endscript
         
     </div>
-
-    <div class="absolute ml-0 top-0 right-0 w-full p-4 z-100 bg-gradient-to-b from-white to-black/0">
-      <div class="flex justify-end space-x-4">
-        @if(auth()->user()->role == 'admin')
-            <flux:modal.trigger name="listing-notes">
-                <flux:button icon="pencil">Edit Notes</flux:button>
-        </flux:modal.trigger>
-            <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
-        @endif
-        <flux:button wire:click="save" variant="primary" icon="">Save Listing</flux:button>
+    <div class="hidden lg:block absolute ml-0 top-0 right-0 w-full p-4 z-100 bg-gradient-to-b from-white to-black/0">
+        <div class="flex justify-end space-x-4 ">
+          @if(auth()->user()->role == 'admin')
+              <flux:modal.trigger name="listing-notes">
+                  <flux:button icon="pencil">Edit Notes</flux:button>
+          </flux:modal.trigger>
+              <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
+          @endif
+          <flux:button wire:click="save" variant="primary" icon="">Save Listing</flux:button>
+        </div>
       </div>
-    </div>
+      <div class="block lg:hidden fixed ml-0 bottom-0 right-0 w-full p-4 z-100 bg-white border-t">
+        <div class="flex justify-end space-x-4 ">
+          @if(auth()->user()->role == 'admin')
+              <flux:modal.trigger name="listing-notes">
+                  <flux:button icon="pencil">Edit Notes</flux:button>
+          </flux:modal.trigger>
+              <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
+          @endif
+          <flux:button wire:click="save" variant="primary" icon="">Save Listing</flux:button>
+        </div>
+      </div>
+
+
+    
       
     <flux:modal name="edit-header-photo" variant="flyout">
         <div>

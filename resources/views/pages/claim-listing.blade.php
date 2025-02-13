@@ -6,7 +6,7 @@
 
         <div class="relative">
           <div class="mx-auto container">
-            <div class="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
+            <div class="relative pt-14 lg:w-full lg:max-w-2xl">
       
               <div class="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
                 <div class="mx-auto flex flex-col inline-block max-w-2xl lg:mx-0 lg:max-w-xl">

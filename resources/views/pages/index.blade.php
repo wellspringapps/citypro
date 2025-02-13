@@ -32,7 +32,7 @@ $listings = computed(function(){
 
         <div class="relative ">
           <div class="mx-auto container">
-            <div class="relative z-10 pt-1 lg:w-full lg:max-w-2xl">
+            <div class="relative pt-1 lg:w-full lg:max-w-2xl">
               <div class="relative px-6 py-12 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
                 <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                   <h1 class="text-7xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">Find an Indianapolis Pro</h1>
@@ -55,7 +55,7 @@ $listings = computed(function(){
         <div>
           <h2 class="text-center text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-6xl my-24">Featured Pros</h2>
         </div>
-        <div class="mx-auto container grid grid-cols-3 my-12 px-6 lg:px-8 gap-12">
+        <div class="mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 px-6 lg:px-8 gap-12">
             
             @foreach($this->listings as $listing)
             <article class="flex flex-col items-start justify-between w-full">

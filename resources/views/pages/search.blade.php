@@ -190,7 +190,7 @@ $listings = computed(function(){
                 <flux:button wire:click="$refresh" class="w-full" icon="magnifying-glass">Search</flux:button>
             </div>
         </div>
-        <div class="mx-auto container grid grid-cols-3 my-12 px-6 lg:px-8 gap-12">
+        <div class="mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 px-6 lg:px-8 gap-12">
             
             @forelse($this->listings as $listing)
             <article class="flex flex-col items-start justify-between w-full">
