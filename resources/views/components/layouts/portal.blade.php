@@ -112,5 +112,15 @@ $logout = function(){
             <flux:toast  position="bottom right"/>
         @endpersist
         @fluxScripts
+        @if(!auth()->user() || auth()->user()->role != 'admin')
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJYEKLZEGY"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-NJYEKLZEGY');
+            </script>
+        @endif
     </body>
 </html>
