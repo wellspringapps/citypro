@@ -35,29 +35,34 @@ $save = function(){
 };
 
 $updateHeaderPhoto = function(){
-    $this->form->headerPhoto = $this->headerPhoto->store('header-photos/' . $this->listing->public_id, 'public');
+    $this->form->headerPhoto = $this->headerPhoto->store('header-photos/' . $this->listing->public_id);
+    $this->form->saveHeaderPhoto($this->listing);
     Flux::modals()->close();
+    
 };
 
 $updateListingPhoto = function(){
-    $this->form->listingPhoto = $this->listingPhoto->store('listing-photos/' . $this->listing->public_id, 'public');
+    $this->form->listingPhoto = $this->listingPhoto->store('listing-photos/' . $this->listing->public_id);
+    $this->form->saveListingPhoto($this->listing);
     Flux::modals()->close();
+    
 };
 
 $uploadMedia = function(){
-    $uploadedPath = $this->mediaUpload->store('listing-media/' . $this->listing->public_id , 'public');
+    $uploadedPath = $this->mediaUpload->store('listing-media/' . $this->listing->public_id );
     $this->form->media[] = $uploadedPath;
-    $this->mediaUpload = null;
 
     $this->form->save($this->listing);
 
     Flux::toast('Media uploaded.');
+
+    $this->mediaUpload = null;
 };
 
 $removeMedia = function($idx){
     $asset = $this->form->media[$idx];
     unset($this->form->media[$idx]);
-    //$this->form->media = array_values($this->form->media);
+    $this->form->media = array_values($this->form->media);
     $this->form->save($this->listing);
 
     Storage::disk('public')->delete($asset);
@@ -88,16 +93,17 @@ $uploadAttachment = function(){
     $nameWithoutExtension = pathinfo($originalName, PATHINFO_FILENAME);
     $newName = $nameWithoutExtension . '-' . generateNanoId() . '.' . $extension;
     
-    $uploadedPath = $this->attachmentUpload->storeAs('listing-attachments/' . $this->listing->public_id, $newName, 'public');
+    $uploadedPath = $this->attachmentUpload->storeAs('listing-attachments/' . $this->listing->public_id, $newName);
     $this->form->attachments[] = [
       'path' => $uploadedPath,
       'title' => $this->attachmentTitle,
     ];
-    $this->attachmentUpload = null;
 
     $this->form->save($this->listing);
 
     Flux::toast('Attachment uploaded.');
+
+    $this->attachmentUpload = null;
 };
 
 $removeAttachment = function($idx){
@@ -144,20 +150,20 @@ $saveListingNotes = function(){
     <div class="relative">
         <div class="h-64 md:h-96 w-full bg-gray-200 relative ">
             <flux:modal.trigger name="edit-header-photo">
-                @if($listing->header_photo )
-        <img
-            src="{{ asset($listing->header_photo) }}"
-            alt="Business cover"
-            class="w-full h-full object-cover"
-        />
-        @else
-        <img
-            src="/no-pic.png"
-            alt="Business cover"
-            class="w-full h-full object-contain"
-        />
+                @if($form->headerPhoto )
+                    <img
+                        src="{{ asset($form->headerPhoto) }}"
+                        alt="Business cover"
+                        class="w-full h-full object-cover"
+                    />
+                @else
+                    <img
+                        src="/no-pic.png"
+                        alt="Business cover"
+                        class="w-full h-full object-contain"
+                    />
 
-        @endif
+                @endif
 
                 
             </flux:modal.trigger>
@@ -256,9 +262,22 @@ $saveListingNotes = function(){
 
                     @if(count($form->media) < $this->uploadMediaLimit)
                     <flux:card class="mt-4">
-                        <div class="flex items-center gap-4">
+                        <div 
+                            class="flex items-center gap-4"
+                            x-data="{ uploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="uploading = true"
+                            x-on:livewire-upload-finish="uploading = false"
+                            x-on:livewire-upload-cancel="uploading = false"
+                            x-on:livewire-upload-error="uploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress"
+                        >
                             <flux:input type="file" wire:model="mediaUpload" accept="video/*,image/*"/>
-                            <flux:button wire:click="uploadMedia" variant="primary">Upload Media</flux:button>
+
+                            <div x-show="uploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+
+                            <flux:button wire:click="uploadMedia" variant="primary">Add Media</flux:button>
                         </div>
                     </flux:card>
 
@@ -295,7 +314,7 @@ $saveListingNotes = function(){
                         <flux:input label="Title" description="Let users know what this file is." wire:model="attachmentTitle" />
                         <div class="flex items-center gap-4 mt-4">
                             <flux:input type="file" wire:model="attachmentUpload" />
-                            <flux:button wire:click="uploadAttachment" variant="primary">Upload Attachment</flux:button>
+                            <flux:button wire:click="uploadAttachment" variant="primary">Add Attachment</flux:button>
                         </div>
                     </flux:card>
 
@@ -489,11 +508,22 @@ $saveListingNotes = function(){
         <div>
             <flux:heading size="lg">Update Header Photo</flux:heading>
             <flux:subheading>This is where you should display your best work.</flux:subheading>
-            <div class="mt-4">
+            <div 
+                class="mt-4"
+                x-data="{ uploading: false, progress: 0 }"
+                x-on:livewire-upload-start="uploading = true"
+                x-on:livewire-upload-finish="uploading = false"
+                x-on:livewire-upload-cancel="uploading = false"
+                x-on:livewire-upload-error="uploading = false"
+                x-on:livewire-upload-progress="progress = $event.detail.progress"
+            >
                 <flux:input wire:model="headerPhoto" type="file" />
+                <div x-show="uploading">
+                    <progress max="100" x-bind:value="progress"></progress>
+                </div>
             </div>
-            <div class="mt-4 flex justify-end">
-                <flux:button wire:click="updateHeaderPhoto" variant="primary">Save</flux:button>
+            <div class="mt-4 flex justify-end" x-show="!uploading">
+                <flux:button wire:click="updateHeaderPhoto" variant="primary"></flux:button>
             </div>
         </div>
     </flux:modal>
@@ -502,9 +532,21 @@ $saveListingNotes = function(){
         <div>
             <flux:heading size="lg">Update Listing Photo</flux:heading>
             <flux:subheading>This is where you should put your logo or something identifying.</flux:subheading>
-            <div class="mt-4">
+            <div 
+                class="mt-4"
+                x-data="{ uploading: false, progress: 0 }"
+                x-on:livewire-upload-start="uploading = true"
+                x-on:livewire-upload-finish="uploading = false"
+                x-on:livewire-upload-cancel="uploading = false"
+                x-on:livewire-upload-error="uploading = false"
+                x-on:livewire-upload-progress="progress = $event.detail.progress"
+            >
                 <flux:input wire:model="listingPhoto" type="file" />
+                <div x-show="uploading">
+                    <progress max="100" x-bind:value="progress"></progress>
+                </div>
             </div>
+
             <div class="mt-4 flex justify-end">
                 <flux:button wire:click="updateListingPhoto" variant="primary">Save</flux:button>
             </div>

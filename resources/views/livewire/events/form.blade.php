@@ -38,7 +38,7 @@ $create = function(){
     $data = $this->validate();
 
     $data['user_id'] = $authUser->id;
-    $data['image'] = $data['image']->store('event-photos/' . $authUser->listing->public_id, 'public');
+    $data['image'] = $data['image']->store('event-photos/' . $authUser->listing->public_id);
 
     $event = $authUser->listing->events()->create($data);
 
@@ -53,7 +53,7 @@ $update = function(){
     $data = $this->validate();
 
     if(!is_string($data['image']) && $data['image']){
-        $data['image'] = $data['image']->store('event-photos/' . $authUser->listing->public_id, 'public');
+        $data['image'] = $data['image']->store('event-photos/' . $authUser->listing->public_id);
     }
 
     $event = $this->event->update($data);

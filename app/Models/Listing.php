@@ -36,8 +36,8 @@ class Listing extends Model
         'hours' => 'array',
         'categories' => 'array',
         'socials' => 'array',
-        'media' => 'collection',
-        'attachments' => 'collection',
+        'media' => 'array',
+        'attachments' => 'array',
     ];
     
     public function user()

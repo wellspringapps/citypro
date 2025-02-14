@@ -103,7 +103,7 @@ name('public.listing');
 
             @if($listing->pro)
 
-                @if($listing->media?->isNotEmpty() ?? false)
+                @if($listing->media ?? false)
                     <section class="mb-8">
                         <h2 class="text-2xl font-semibold mb-4">Media</h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -120,7 +120,7 @@ name('public.listing');
                     </section>
                 @endif
             
-                @if($listing->attachments?->isNotEmpty() ?? false)
+                @if($listing->attachments ?? false)
                     <section class="mb-8">
                         <h2 class="text-2xl font-semibold mb-4">Attachments</h2>
                         <div class="">

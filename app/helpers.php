@@ -39,17 +39,21 @@ if(!function_exists('generateNanoId')){
 
 if(!function_exists('isImage')){
     function isImage($file): bool{
-        $image = getimagesize($file);
+        try{
+            $image = getimagesize($file);
 
-        if($image === false){
-            return false;
+            if($image === false){
+                return false;
+            }
+
+            
+            $imageMime = $image['mime'];
+            $allowedMime = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff', 'image/webp', 'image/svg+xml'];
+
+            return in_array($imageMime, $allowedMime);
+        } catch(Exception $e) {
+            return true;
         }
-
-        
-        $imageMime = $image['mime'];
-        $allowedMime = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff', 'image/webp', 'image/svg+xml'];
-
-        return in_array($imageMime, $allowedMime);
     }
 }
 

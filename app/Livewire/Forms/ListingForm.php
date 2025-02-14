@@ -200,12 +200,27 @@ class ListingForm extends Form
     {
         $data = $this->all();
 
-        $data['header_photo'] = $this->headerPhoto;
-        $data['listing_photo'] = $this->listingPhoto;
+        
+        
         $data['areas_served'] = $this->areasServed;
 
         $listing->update($data);
     }
+
+    public function saveHeaderPhoto($listing)
+    {
+        $listing->update([
+            'header_photo' => $this->headerPhoto
+        ]);
+    }
+
+    public function saveListingPhoto($listing)
+    {
+        $listing->update([
+            'listing_photo' => $this->listingPhoto
+        ]);
+    }
+
 
     public function getPossibleCategories()
     {
