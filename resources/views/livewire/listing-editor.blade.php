@@ -236,7 +236,16 @@ $saveListingNotes = function(){
                         <h2 class="text-2xl font-semibold mb-4" @dblClick="editDesc = !editDesc">About</h2>
                         <div x-show="!editDesc" class="text-gray-600 leading-relaxed prose">{!! $form->description !!}</div>
                         <div x-show="editDesc" class="space-y-4">
-                            <flux:editor wire:model.live="form.description" class="text-gray-600 leading-relaxed" />
+                            @php
+
+                            $tools = 'heading | bold italic underline strike | bullet ordered blockquote align ~ undo redo';
+
+                            if($listing->pro){
+                                $tools = 'heading | bold italic underline strike | bullet ordered blockquote align | link ~ undo redo';
+                            }
+
+                            @endphp
+                            <flux:editor toolbar="{{ $tools }}" wire:model.live="form.description" class="text-gray-600 leading-relaxed" />
                         </div>
                     </div>
                 </section>
