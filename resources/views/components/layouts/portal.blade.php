@@ -112,16 +112,18 @@ $logout = function(){
             <flux:toast  position="bottom right"/>
         @endpersist
         @fluxScripts
-        @if(!auth()->user() || auth()->user()->role != 'admin')
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJYEKLZEGY"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+        @if(config('app.env') == 'local')
+            @if(!auth()->user() || auth()->user()->role != 'admin')
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJYEKLZEGY"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
 
-                gtag('config', 'G-NJYEKLZEGY');
-            </script>
-            <script src="https://js.sentry-cdn.com/77ef17e559d3dcfaa706d3923c8c5d84.min.js" crossorigin="anonymous"></script>
+                    gtag('config', 'G-NJYEKLZEGY');
+                </script>
+                <script src="https://js.sentry-cdn.com/77ef17e559d3dcfaa706d3923c8c5d84.min.js" crossorigin="anonymous"></script>
+            @endif
         @endif
     </body>
 </html>
