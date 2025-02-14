@@ -523,7 +523,7 @@ $saveListingNotes = function(){
                 </div>
             
                 <div class="mt-4 flex justify-end" x-show="!uploading">
-                    <flux:button wire:click="updateHeaderPhoto" variant="primary"></flux:button>
+                    <flux:button wire:click="updateHeaderPhoto" variant="primary">Save</flux:button>
                 </div>
             </div>
         </div>
