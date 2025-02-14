@@ -65,7 +65,7 @@ $removeMedia = function($idx){
     $this->form->media = array_values($this->form->media);
     $this->form->save($this->listing);
 
-    Storage::disk('public')->delete($asset);
+    Storage::delete($asset);
 
     Flux::toast('Media removed.');
 };
@@ -112,7 +112,7 @@ $removeAttachment = function($idx){
     $this->form->attachments = array_values($this->form->attachments);
     $this->form->save($this->listing);
 
-    Storage::disk('public')->delete($asset);
+    Storage::delete($asset);
 
     Flux::toast('Attachment removed.');
 };
@@ -521,9 +521,10 @@ $saveListingNotes = function(){
                 <div x-show="uploading">
                     <progress max="100" x-bind:value="progress"></progress>
                 </div>
-            </div>
-            <div class="mt-4 flex justify-end" x-show="!uploading">
-                <flux:button wire:click="updateHeaderPhoto" variant="primary"></flux:button>
+            
+                <div class="mt-4 flex justify-end" x-show="!uploading">
+                    <flux:button wire:click="updateHeaderPhoto" variant="primary"></flux:button>
+                </div>
             </div>
         </div>
     </flux:modal>
