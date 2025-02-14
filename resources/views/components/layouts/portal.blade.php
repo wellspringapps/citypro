@@ -121,10 +121,7 @@ $logout = function(){
 
                 gtag('config', 'G-NJYEKLZEGY');
             </script>
-            <script
-            src="https://js.sentry-cdn.com/ad9b5f2c9206a2839ff9e52956a8d918.min.js"
-            crossorigin="anonymous"
-          ></script>
+            <script src="https://js.sentry-cdn.com/77ef17e559d3dcfaa706d3923c8c5d84.min.js" crossorigin="anonymous"></script>
         @endif
     </body>
 </html>
