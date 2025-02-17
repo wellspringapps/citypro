@@ -59,6 +59,22 @@
                                     clip-rule="evenodd"
                                 />
                             </svg>
+                            Phone Number
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg
+                                class="h-6 w-5 flex-none text-blue-900"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
                             Hours & Location
                         </li>
                         <li class="flex gap-x-3">
@@ -76,6 +92,38 @@
                                 />
                             </svg>
                             Areas Served
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg
+                                class="h-6 w-5 flex-none text-blue-900"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                            1 Category
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg
+                                class="h-6 w-5 flex-none text-blue-900"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                            Up to 3 Photos and/or Videos 
                         </li>
                     </ul>
                 </div>
@@ -136,22 +184,6 @@
                                 />
                             </svg>
                             Link to Website
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg
-                                class="h-6 w-5 flex-none text-blue-900"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                                data-slot="icon"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
-                            Links to Social Media
                         </li>
                         <li class="flex gap-x-3">
                             <svg

@@ -323,7 +323,7 @@ $saveListingNotes = function () {
                         </flux:card>
                     @else
                         <flux:card class="mt-4">
-                            You have hit your limit of media. Remove an attachment to add another.
+                            You have hit your limit of media. Remove an item to add another.
                         </flux:card>
                     @endif
                 </section>
