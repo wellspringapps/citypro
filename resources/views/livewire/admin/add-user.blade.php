@@ -1,37 +1,39 @@
 <?php
 
+use App\Models\User;
 use function Livewire\Volt\{
     state,
     mount
 };
 
-state(['name', 'email', 'user']);
-
-mount(function(){
-    $this->name = $this->user->name;
-    $this->email = $this->user->email;
-});
+state(['name', 'email', 'listing']);
 
 $save = function(){
-    $this->user->update([
-        'name' => $this->name
+    $user = User::create([
+        'name' => $this->name,
+        'email' => $this->email
     ]);
 
-    Flux::toast('User updated.');
+    $user->listing()->save($this->listing);
+
+    Flux::toast('User created.');
+    Flux::modals()->close();
+
+    $this->dispatch('listing-update');
 }
 
 ?>
 
-<flux:modal name="edit-user-{{$user->public_id}}">
+<flux:modal name="add-user-{{$listing->public_id}}">
     <div class="min-w-96">
 
         <div class="mb-6">
-            <flux:heading size="lg">Edit {{ $user->name }}</flux:heading>
+            <flux:heading size="lg">Add user to {{ $listing->title }}</flux:heading>
         </div>
         <flux:separator variant="subtle" />
         <div class="my-6 space-y-4">
             <flux:input wire:model="name" label="Name"/>
-            <flux:input wire:model="email" type="email" label="Email" disabled />
+            <flux:input wire:model="email" type="email" label="Email" />
         </div>
         <flux:separator variant="subtle" />
         <div class="mt-6 flex justify-end">

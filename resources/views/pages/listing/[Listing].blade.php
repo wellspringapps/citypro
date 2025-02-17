@@ -69,17 +69,17 @@ name('public.listing');
                 </div>
             </div>
             <div class="flex flex-wrap gap-2">
-                @if($listing->pro)
+               
                 @if($listing->phone)
                   <flux:button target="_blank" href="tel:{{ $listing->phone }}" icon="phone">Call</flux:button>
                 @endif
-                
-                @if($listing->email)
-                  <flux:button target="_blank" href="mailto:{{ $listing->email }}" icon="at-symbol">Email</flux:button>
-                @endif
-                @if($listing->website)
-                  <flux:button target="_blank" :href="$listing->website" icon="globe-alt">Go to Website</flux:button>
-                @endif
+                @if($listing->pro)
+                    @if($listing->email)
+                        <flux:button target="_blank" href="mailto:{{ $listing->email }}" icon="at-symbol">Email</flux:button>
+                    @endif
+                    @if($listing->website)
+                        <flux:button target="_blank" :href="$listing->website" icon="globe-alt">Go to Website</flux:button>
+                    @endif
                 @endif
                 <livewire:reviews.form :$listing />
             </div>
@@ -242,7 +242,7 @@ name('public.listing');
                             <flux:icon.globe-americas />
                             <div >
                                 <h4 class="font-medium">Areas Served</h4>
-                                <p  class="text-gray-600">{{ $listing->areas_served ?? '-' }}</p>
+                                <p  class="text-gray-600">{{ $listing->areas_served ?? '' }}</p>
                             </div>
                         </div>
                     @endif
@@ -285,23 +285,24 @@ name('public.listing');
                             </div>
                         </div>
                     </div>
-                    @if($listing->pro)
-                        @if($listing->phone)
-                            <div class="flex items-start gap-3">
-                                <flux:icon.phone />
-                                <div >
-                                    <h4  class="font-medium">Phone</h4>
-                                    <p class="text-gray-600">{{ $listing->phone ?? '-' }}</p>
-                                </div>
+               
+                    @if($listing->phone)
+                        <div class="flex items-start gap-3">
+                            <flux:icon.phone />
+                            <div >
+                                <h4  class="font-medium">Phone</h4>
+                                <p class="text-gray-600">{{ $listing->phone ?? '' }}</p>
                             </div>
-                        @endif
+                        </div>
+                    @endif
 
+                    @if($listing->pro)
                         @if($listing->email)
                         <div class="flex items-start gap-3">
                             <flux:icon.envelope />
                             <div>
                                 <h4 class="font-medium">Email</h4>
-                                <pclass="text-gray-600">{{ $listing->email ?? '-' }}</p>
+                                <pclass="text-gray-600">{{ $listing->email ?? '' }}</p>
                             </div>
                         </div>
                         @endif

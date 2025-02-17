@@ -138,12 +138,22 @@ $togglePro = function(){
     
 };
 
+$archiveListing = function(){
+    $this->listing->user->delete();
+    $this->listing->delete();
+
+    Flux::toast('Listing archived.');
+    $this->redirect('/admin/listings', navigate: true);
+};
+
 $saveListingNotes = function(){
     $this->listing->notes = $this->notes;
     $this->listing->save();
 
     Flux::toast('Notes saved.');
-}
+};
+
+
 ?>
 
 <div>
@@ -357,13 +367,14 @@ $saveListingNotes = function(){
                             <div x-data="{ editLocation: false }">
                                 <h4 @dblClick="editLocation = !editLocation" class="font-medium">Location</h4>
                                 <p x-show="!editLocation" class="text-gray-600">{{ $form->address }}</p>
-                                <div x-show="editLocation">
+                                <div x-show="editLocation" class="flex">
                                     <gmpx-api-loader key="{{ config('services.google.maps.key')}}" solution-channel="GMP_GE_placepicker_v2"></gmpx-api-loader>
                                     <div id="place-picker-box" class="mb-4">
                                         <div id="place-picker-container">
                                             <gmpx-place-picker placeholder="Enter an address" id="place-picker" style="width:100%"></gmpx-place-picker>
                                         </div>
                                     </div>
+                                    <flux:button icon="" @click="$wire.$set('form.address', '');">Clear</flux:button>
                                 </div>
                             </div>
                         </div>
@@ -435,16 +446,16 @@ $saveListingNotes = function(){
                             </div>
                         </div>
             
-                        @if($listing->pro)
-                            <div class="flex items-start gap-3">
-                                <flux:icon.phone />
-                                <div x-data="{ editPhone: false }">
-                                    <h4 @dblClick="editPhone = !editPhone" class="font-medium">Phone</h4>
-                                    <p x-show="!editPhone" class="text-gray-600">{{ $form->phone ?? '-' }}</p>
-                                    <flux:input x-show="editPhone" wire:model.blur="form.phone" type="text" class="text-3xl font-bold" />
-                                </div>
+                        
+                        <div class="flex items-start gap-3">
+                            <flux:icon.phone />
+                            <div x-data="{ editPhone: false }">
+                                <h4 @dblClick="editPhone = !editPhone" class="font-medium">Phone</h4>
+                                <p x-show="!editPhone" class="text-gray-600">{{ $form->phone ?? '-' }}</p>
+                                <flux:input x-show="editPhone" wire:model.blur="form.phone" type="text" class="text-3xl font-bold" />
                             </div>
-                        @endif
+                        </div>
+                       
             
                         @if($listing->pro)
                             <div class="flex items-start gap-3">
@@ -488,22 +499,28 @@ $saveListingNotes = function(){
         
     </div>
     <div class="hidden lg:block absolute ml-0 top-0 right-0 w-full p-4 z-100 bg-gradient-to-b from-white to-black/0">
-        <div class="flex justify-end space-x-4 ">
+        <div class="flex justify-end gap-x-4 ">
           @if(auth()->user()->role == 'admin')
-              <flux:modal.trigger name="listing-notes">
+                <flux:modal.trigger name="archive-listing">
+                  <flux:button icon="trash" variant="danger">Archive Listing</flux:button>
+                </flux:modal.trigger>
+                <flux:modal.trigger name="listing-notes">
                   <flux:button icon="pencil">Edit Notes</flux:button>
-          </flux:modal.trigger>
-              <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
+                </flux:modal.trigger>
+                <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
           @endif
           <flux:button wire:click="save" variant="primary" icon="">Save Listing</flux:button>
         </div>
       </div>
       <div class="block lg:hidden fixed ml-0 bottom-0 right-0 w-full p-4 z-100 bg-white border-t">
-        <div class="flex justify-end space-x-4 ">
+        <div class="flex justify-end gap-x-4 ">
           @if(auth()->user()->role == 'admin')
+            <flux:modal.trigger name="archive-listing">
+                  <flux:button icon="trash" variant="danger">Archive Listing</flux:button>
+                </flux:modal.trigger>
               <flux:modal.trigger name="listing-notes">
                   <flux:button icon="pencil">Edit Notes</flux:button>
-          </flux:modal.trigger>
+            </flux:modal.trigger>
               <flux:button wire:click="togglePro" icon="">{{ $listing->pro ? 'Remove Pro' : 'Give Pro' }}</flux:button>
           @endif
           <flux:button wire:click="save" variant="primary" icon="">Save Listing</flux:button>
@@ -587,6 +604,15 @@ $saveListingNotes = function(){
             </div>
             <div class="mt-4 flex justify-end">
                 <flux:button wire:click="saveListingNotes" variant="primary">Save</flux:button>
+            </div>
+        </div>
+    </flux:modal>
+    <flux:modal name="archive-listing">
+        <div>
+            <flux:heading size="lg">Archive Listing</flux:heading>
+            <flux:subheading>Are you sure you want to archive this listing?</flux:subheading>
+            <div class="mt-4 flex justify-end">
+                <flux:button wire:click="archiveListing" variant="primary">Confirm</flux:button>
             </div>
         </div>
     </flux:modal>

@@ -200,7 +200,10 @@ class ListingForm extends Form
     {
         $data = $this->all();
 
-        
+        if(!$listing->pro){
+            $data['description'] = strip_tags($data['description'], ['<p>', '<h1>', '<h2>', '<h3>', '<strong>', '<em>', '<s>', '<ul>', '<li>', '<ol>', '<blockquote>']);
+            $this->description = $data['description'];
+        }
         
         $data['areas_served'] = $this->areasServed;
 
