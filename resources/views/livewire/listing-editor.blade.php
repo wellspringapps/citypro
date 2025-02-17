@@ -28,7 +28,7 @@ mount(function () {
         $this->notes = $this->listing->notes;
     }
 
-    $this->uploadMediaLimit = 15;
+    $this->uploadMediaLimit = $this->listing->pro ? 15 : 3;
     $this->uploadAttachmentLimit = 3;
     $this->maxCategories = $this->listing->pro ? 3 : 1;
 });
@@ -266,68 +266,68 @@ $saveListingNotes = function () {
                     </div>
                 </section>
 
-                @if ($listing->pro)
-                    <section class="mb-8">
-                        <h2 class="mb-4 text-2xl font-semibold">Media</h2>
-                        <div class="grid grid-cols-2 gap-4 md:grid-cols-3" wire:sortable="reorderMedia">
-                            @foreach ($form->media as $idx => $media)
-                                <div
-                                    wire:sortable.item="{{ $media }}"
-                                    wire:key="{{ $media }}"
-                                    class="hover-scale relative aspect-square overflow-hidden rounded-lg bg-black"
-                                >
-                                    <div class="flex justify-between p-4">
-                                        <flux:icon.bars-3 wire:sortable.handle class="size-6 text-white" />
-                                        <flux:icon.x-mark
-                                            wire:click="removeMedia({{ $idx }})"
-                                            class="size-6 text-white hover:text-red-500"
-                                        />
-                                    </div>
-
-                                    @if (isImage(asset($media)))
-                                        <img
-                                            src="{{ asset($media) }}"
-                                            alt="Gallery image 1"
-                                            class="h-full w-full object-cover"
-                                        />
-                                    @else
-                                        <video
-                                            src="{{ asset($media) }}"
-                                            class="h-full w-full object-contain"
-                                            controls
-                                        ></video>
-                                    @endif
+                
+                <section class="mb-8">
+                    <h2 class="mb-4 text-2xl font-semibold">Media</h2>
+                    <div class="grid grid-cols-2 gap-4 md:grid-cols-3" wire:sortable="reorderMedia">
+                        @foreach ($form->media as $idx => $media)
+                            <div
+                                wire:sortable.item="{{ $media }}"
+                                wire:key="{{ $media }}"
+                                class="hover-scale relative aspect-square overflow-hidden rounded-lg bg-black"
+                            >
+                                <div class="flex justify-between p-4">
+                                    <flux:icon.bars-3 wire:sortable.handle class="size-6 text-white" />
+                                    <flux:icon.x-mark
+                                        wire:click="removeMedia({{ $idx }})"
+                                        class="size-6 text-white hover:text-red-500"
+                                    />
                                 </div>
-                            @endforeach
-                        </div>
 
-                        @if (count($form->media) < $this->uploadMediaLimit)
-                            <flux:card class="mt-4">
-                                <div
-                                    class="flex items-center gap-4"
-                                    x-data="{ uploading: false, progress: 0 }"
-                                    x-on:livewire-upload-start="uploading = true"
-                                    x-on:livewire-upload-finish="uploading = false"
-                                    x-on:livewire-upload-cancel="uploading = false"
-                                    x-on:livewire-upload-error="uploading = false"
-                                    x-on:livewire-upload-progress="progress = $event.detail.progress"
-                                >
-                                    <flux:input type="file" wire:model="mediaUpload" accept="video/*,image/*" />
+                                @if (isImage(asset($media)))
+                                    <img
+                                        src="{{ asset($media) }}"
+                                        alt="Gallery image 1"
+                                        class="h-full w-full object-cover"
+                                    />
+                                @else
+                                    <video
+                                        src="{{ asset($media) }}"
+                                        class="h-full w-full object-contain"
+                                        controls
+                                    ></video>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
 
-                                    <div x-show="uploading">
-                                        <progress max="100" x-bind:value="progress"></progress>
-                                    </div>
+                    @if (count($form->media) < $this->uploadMediaLimit)
+                        <flux:card class="mt-4">
+                            <div
+                                class="flex items-center gap-4"
+                                x-data="{ uploading: false, progress: 0 }"
+                                x-on:livewire-upload-start="uploading = true"
+                                x-on:livewire-upload-finish="uploading = false"
+                                x-on:livewire-upload-cancel="uploading = false"
+                                x-on:livewire-upload-error="uploading = false"
+                                x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
+                                <flux:input type="file" wire:model="mediaUpload" accept="video/*,image/*" />
 
-                                    <flux:button wire:click="uploadMedia" variant="primary">Add Media</flux:button>
+                                <div x-show="uploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
                                 </div>
-                            </flux:card>
-                        @else
-                            <flux:card class="mt-4">
-                                You have hit your limit of media. Remove an attachment to add another.
-                            </flux:card>
-                        @endif
-                    </section>
-                @endif
+
+                                <flux:button wire:click="uploadMedia" variant="primary">Add Media</flux:button>
+                            </div>
+                        </flux:card>
+                    @else
+                        <flux:card class="mt-4">
+                            You have hit your limit of media. Remove an attachment to add another.
+                        </flux:card>
+                    @endif
+                </section>
+
 
                 @if ($listing->pro)
                     <section class="mb-8">

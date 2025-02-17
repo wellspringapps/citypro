@@ -101,25 +101,24 @@ name('public.listing');
             </section>
             @endif
 
-            @if($listing->pro)
-
-                @if($listing->media ?? false)
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold mb-4">Media</h2>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            @foreach($listing->media as $idx => $media)
-                                <div class="aspect-square bg-black rounded-lg overflow-hidden hover-scale relative ">
-                                    @if(isImage(asset($media)))
-                                        <img src="{{ asset( $media ) }}" class="w-full h-full object-cover glightbox" />
-                                    @else
-                                        <video src="{{ asset( $media ) }}" class="w-full h-full object-contain glightbox" controls></video>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
-                @endif
+            @if($listing->media ?? false)
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Media</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        @foreach($listing->media as $idx => $media)
+                            <div class="aspect-square bg-black rounded-lg overflow-hidden hover-scale relative ">
+                                @if(isImage(asset($media)))
+                                    <img src="{{ asset( $media ) }}" class="w-full h-full object-cover glightbox" />
+                                @else
+                                    <video src="{{ asset( $media ) }}" class="w-full h-full object-contain glightbox" controls></video>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
             
+            @if($listing->pro)
                 @if($listing->attachments ?? false)
                     <section class="mb-8">
                         <h2 class="text-2xl font-semibold mb-4">Attachments</h2>

@@ -9,8 +9,8 @@ use function Livewire\Volt\{
 state(['search', 'categories'])->url();
 
 $listings = computed(function(){
-    $listingsSearch = Listing::select('listings.*')
-    ->join('users', 'users.id', '=', 'listings.user_id');
+    $listingsSearch = Listing::select('listings.*');
+    //->join('users', 'users.id', '=', 'listings.user_id');
     /*->orderByRaw('
         CASE 
             WHEN users.forever = 1 OR users.stripe_id IS NOT NULL THEN 1 
