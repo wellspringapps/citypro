@@ -1,31 +1,26 @@
 <?php
 
 use App\Models\Review;
-use function Livewire\Volt\{
-    state,
-    rules
-};
+use function Livewire\Volt\{state, rules};
 
 state(['listing', 'review', 'rating', 'name', 'email']);
 
-rules([ 
-    'review' => 'required', 
-    'rating' => 'required', 
-    'name' => 'required', 
-    'email' => 'required'
+rules([
+    'review' => 'required',
+    'rating' => 'required',
+    'name' => 'required',
+    'email' => 'required',
 ]);
 
-$send = function(){
-
+$send = function () {
     $this->validate();
-
 
     $review = Review::create([
         'listing_id' => $this->listing->id,
         'name' => $this->name,
         'email' => $this->email,
         'review' => $this->review,
-        'rating' => $this->rating
+        'rating' => $this->rating,
     ]);
 
     $avgRating = $this->listing->reviews()->avg('rating');
@@ -37,9 +32,7 @@ $send = function(){
     Flux::toast('Thank you for your review!');
 
     $this->dispatch('review-sent');
-    
-}
-
+};
 
 ?>
 
@@ -50,16 +43,18 @@ $send = function(){
     <flux:modal name="review-form" variant="flyout">
         <div class="mb-6">
             <flux:heading size="lg">Leave a Review</flux:heading>
-            <flux:subheading>You are reviewing <strong>{{ $listing->title }}</strong></flux:subheading>
+            <flux:subheading>
+                You are reviewing
+                <strong>{{ $listing->title }}</strong>
+            </flux:subheading>
         </div>
         <flux:separator variant="subtle" />
         <div class="space-y-4">
-            
             <flux:radio.group wire:model="rating" label="Rating" variant="cards" class="flex-col">
-                <flux:radio value="5" >
+                <flux:radio value="5">
                     <flux:radio.indicator />
 
-                    <div class="flex-1 flex">
+                    <div class="flex flex-1">
                         <flux:icon.star />
                         <flux:icon.star />
                         <flux:icon.star />
@@ -67,44 +62,44 @@ $send = function(){
                         <flux:icon.star />
                     </div>
                 </flux:radio>
-                <flux:radio value="4" >
+                <flux:radio value="4">
                     <flux:radio.indicator />
 
-                    <div class="flex-1 flex">
+                    <div class="flex flex-1">
                         <flux:icon.star />
                         <flux:icon.star />
                         <flux:icon.star />
                         <flux:icon.star />
                     </div>
                 </flux:radio>
-                <flux:radio value="3" >
+                <flux:radio value="3">
                     <flux:radio.indicator />
 
-                    <div class="flex-1 flex">
+                    <div class="flex flex-1">
                         <flux:icon.star />
                         <flux:icon.star />
                         <flux:icon.star />
                     </div>
                 </flux:radio>
-                <flux:radio value="2" >
+                <flux:radio value="2">
                     <flux:radio.indicator />
 
-                    <div class="flex-1 flex">
+                    <div class="flex flex-1">
                         <flux:icon.star />
                         <flux:icon.star />
                     </div>
                 </flux:radio>
-                <flux:radio value="1" >
+                <flux:radio value="1">
                     <flux:radio.indicator />
 
-                    <div class="flex-1 flex">
+                    <div class="flex flex-1">
                         <flux:icon.star />
                     </div>
                 </flux:radio>
             </flux:radio.group>
-            <flux:input wire:model="name" label="Your Name"/>
-            <flux:input wire:model="email" type="email" label="Your Email"/>
-            <flux:textarea wire:model="review" label="Review"/>
+            <flux:input wire:model="name" label="Your Name" />
+            <flux:input wire:model="email" type="email" label="Your Email" />
+            <flux:textarea wire:model="review" label="Review" />
         </div>
         <flux:separator variant="subtle" />
         <div class="mt-6 flex justify-end">

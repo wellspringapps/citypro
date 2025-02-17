@@ -18,9 +18,9 @@ state(['coupon', 'readonly']);
                             {{ $coupon->name }}
                          
                         </h3>
-                        <p class="mt-1 text-sm text-gray-500">{{ $coupon->description}}</p>
+                        <p class="mt-1 text-sm text-gray-500">{{ $coupon->description }}</p>
                     </div>
-                    <p class="mt-1 text-sm text-gray-500">{{ $coupon->terms}}</p>
+                    <p class="mt-1 text-sm text-gray-500">{{ $coupon->terms }}</p>
                 </div>
             </div>
         </flux:modal.trigger>
@@ -38,9 +38,9 @@ state(['coupon', 'readonly']);
                         {{ $coupon->name }}
                         
                     </h3>
-                    <p class="mt-1 text-sm text-gray-500">{{ $coupon->description}}</p>
+                    <p class="mt-1 text-sm text-gray-500">{{ $coupon->description }}</p>
                 </div>
-                <p class="mt-1 text-sm text-gray-500">{{ $coupon->terms}}</p>
+                <p class="mt-1 text-sm text-gray-500">{{ $coupon->terms }}</p>
             </div>
         </div>
     @endif

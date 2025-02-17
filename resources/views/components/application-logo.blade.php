@@ -1,4 +1,3 @@
-
-    <a href="/">
-        <img src="/ccp-logo.PNG" />
-    </a>
+<a href="/">
+    <img src="/ccp-logo.PNG" />
+</a>

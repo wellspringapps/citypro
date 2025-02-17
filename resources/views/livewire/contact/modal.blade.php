@@ -1,20 +1,17 @@
 <?php
 
-use function Livewire\Volt\{
-    state
-};
+use function Livewire\Volt\{state};
 
 state(['submission']);
 
-$archive = function(){
+$archive = function () {
     $this->submission->delete();
 
     Flux::modals()->close();
     Flux::toast('Message archived.');
 
     $this->dispatch('message-archived');
-}
-
+};
 
 ?>
 
