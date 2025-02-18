@@ -219,7 +219,7 @@
 
         @fluxScripts
 
-        @if (config('app.env') == 'local')
+        @if (config('app.env') != 'local')
             @if (! auth()->user() || auth()->user()->role != 'admin')
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NJYEKLZEGY"></script>
                 <script>
