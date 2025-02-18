@@ -6,6 +6,8 @@ name('public.listing');
 
 ?>
 <x-layouts.public>
+  <x-slot name="title">{{ $listing->title }} | CircleCity.Pro</x-slot>
+  <x-slot name="description">{{ limitString($listing->description) }}</x-slot>
   <div class="relative">
     <div class="h-64 md:h-96 w-full bg-gray-200 relative ">
         @if($listing->header_photo )
@@ -117,7 +119,7 @@ name('public.listing');
                     </div>
                 </section>
             @endif
-            
+
             @if($listing->pro)
                 @if($listing->attachments ?? false)
                     <section class="mb-8">

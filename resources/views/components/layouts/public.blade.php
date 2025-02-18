@@ -8,7 +8,7 @@
         <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
         @if (isset($description))
-            <meta name="description" content=" {{ $description }}" />
+            <meta name="description" content="{{ $description }}" />
         @endif
 
         <!-- Fonts -->
