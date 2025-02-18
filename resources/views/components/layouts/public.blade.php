@@ -13,7 +13,7 @@
         <meta name="description" content="{{ $description ?? '' }}" />
 
 
-        <meta property="og:title" content="Your Page Title" />
+        <meta property="og:title" content="{{ $title ?? config('app.name', 'Laravel') }}" />
         @if (isset($description))
             <meta property="og:description" content="{{ $description }}" />
         @endif
