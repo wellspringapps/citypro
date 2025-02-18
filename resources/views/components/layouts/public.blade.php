@@ -7,11 +7,19 @@
 
         <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
-        @if (isset($description))
-            <meta name="description" content="{{ $description }}" />
-        @endif
+        
+        <link rel="canonical" href="{{ url()->current() }}" />
 
-        <link rel="canonical" href="{{ request()->route()->uri() }}" />
+        <meta name="description" content="{{ $description ?? '' }}" />
+
+
+        <meta property="og:title" content="Your Page Title" />
+        @if (isset($description))
+            <meta property="og:description" content="{{ $description }}" />
+        @endif
+        <meta property="og:image" content="{{ $ogImage ?? config('app.url') ."/og.png" }}" />
+        <meta property="og:url" content="{{ url()->current() }}" />
+        <meta property="og:type" content="website" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net" />
