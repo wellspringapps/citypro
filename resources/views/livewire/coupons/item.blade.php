@@ -9,7 +9,7 @@ state(['coupon', 'readonly']);
     <div>
         <flux:modal.trigger name="update-coupon-{{ $coupon->public_id }}">
             <div class="group relative">
-                <img src="{{ asset($coupon->image )}}" class=" rounded shadow aspect-video w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 ">
+                <img src="{{ asset($coupon->image )}}" class=" rounded-sm shadow-sm aspect-video w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 ">
                 <div class="mt-4 flex justify-between">
                     <div>
                         <h3 class="text-sm text-gray-700">
@@ -29,7 +29,7 @@ state(['coupon', 'readonly']);
         </flux:modal>
     @else
         <div class="group relative">
-            <img src="{{ asset($coupon->image )}}" class=" rounded shadow aspect-video w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 ">
+            <img src="{{ asset($coupon->image )}}" class=" rounded-sm shadow-sm aspect-video w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 ">
             <div class="mt-4 flex justify-between">
                 <div>
                     <h3 class="text-sm text-gray-700">

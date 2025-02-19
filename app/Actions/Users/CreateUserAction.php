@@ -4,7 +4,7 @@ namespace App\Actions\Users;
 
 use App\Models\User;
 
-class CreateNewUser
+class CreateUserAction
 {
     public function handle(string $name, string $email): User
     {

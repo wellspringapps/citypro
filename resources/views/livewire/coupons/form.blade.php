@@ -83,7 +83,7 @@ $remove = function () {
                 </div>
                 <div x-show="!edit" @dblClick="edit = true">
                     <div class="text-xs">Double click image to edit</div>
-                    <img src="{{ asset($coupon->image) }}" class="aspect-video w-64 rounded object-cover" />
+                    <img src="{{ asset($coupon->image) }}" class="aspect-video w-64 rounded-sm object-cover" />
                 </div>
             </div>
         @else

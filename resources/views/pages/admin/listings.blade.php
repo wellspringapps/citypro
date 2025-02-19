@@ -39,25 +39,25 @@ $listings = computed(function () {
         <div class="mt-12">
             @if (count($this->listings))
                 <flux:table :paginate="$this->listings">
-                    <flux:columns>
-                        <flux:column>Name</flux:column>
-                        <flux:column>Email</flux:column>
-                        <flux:column>Pro</flux:column>
-                    </flux:columns>
+                    <flux:table.columns>
+                        <flux:table.column>Name</flux:table.column>
+                        <flux:table.column>Email</flux:table.column>
+                        <flux:table.column>Pro</flux:table.column>
+                    </flux:table.columns>
 
-                    <flux:rows>
+                    <flux:table.rows>
                         @foreach ($this->listings as $listing)
-                            <flux:row :key="$listing->public_id">
-                                <flux:cell class="flex items-center gap-3">
+                            <flux:table.row :key="$listing->public_id">
+                                <flux:table.cell class="flex items-center gap-3">
                                     <a
                                         href="{{ route('admin.listing', ['listing' => $listing]) }}"
                                         :key="$listing->id"
                                     >
                                         {{ $listing->title }}
                                     </a>
-                                </flux:cell>
+                                </flux:table.cell>
 
-                                <flux:cell class="whitespace-nowrap">
+                                <flux:table.cell class="whitespace-nowrap">
                                     @if ($listing->user)
                                         <flux:modal.trigger name="edit-user-{{ $listing->user->public_id }}">
                                             {{ $listing->user->email }}
@@ -67,15 +67,15 @@ $listings = computed(function () {
                                             Connect user to listing
                                         </flux:modal.trigger>
                                     @endif
-                                </flux:cell>
-                                <flux:cell class="whitespace-nowrap">
+                                </flux:table.cell>
+                                <flux:table.cell class="whitespace-nowrap">
                                     @if ($listing->pro)
                                         <flux:icon.check-badge />
                                     @endif
-                                </flux:cell>
-                            </flux:row>
+                                </flux:table.cell>
+                            </flux:table.row>
                         @endforeach
-                    </flux:rows>
+                    </flux:table.rows>
                 </flux:table>
                 @foreach ($this->listings as $listing)
                     @if ($listing->user)

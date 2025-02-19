@@ -30,7 +30,7 @@ $send = function () {
 
 ?>
 
-<div class="mx-auto mt-16 rounded-xl bg-gray-100 p-4 shadow sm:mt-20">
+<div class="mx-auto mt-16 rounded-xl bg-gray-100 p-4 shadow-sm sm:mt-20">
     <div class="space-y-4">
         <flux:heading size="xl" level="2">Contact {{ $listing->title }}</flux:heading>
         <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">

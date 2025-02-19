@@ -32,35 +32,35 @@ $reviews = computed(function () {
         <div class="mt-12">
             @if (count($this->reviews))
                 <flux:table :paginate="$this->reviews">
-                    <flux:columns>
-                        <flux:column>Name</flux:column>
-                        <flux:column>Email</flux:column>
-                        <flux:column>Showing</flux:column>
-                        <flux:column>Sent</flux:column>
-                    </flux:columns>
+                    <flux:table.columns>
+                        <flux:table.column>Name</flux:table.column>
+                        <flux:table.column>Email</flux:table.column>
+                        <flux:table.column>Showing</flux:table.column>
+                        <flux:table.column>Sent</flux:table.column>
+                    </flux:table.columns>
 
-                    <flux:rows>
+                    <flux:table.rows>
                         @foreach ($this->reviews as $review)
-                            <flux:row :key="$review->id">
-                                <flux:cell class="flex items-center gap-3">
+                            <flux:table.row :key="$review->id">
+                                <flux:table.cell class="flex items-center gap-3">
                                     {{ $review->name }}
-                                </flux:cell>
+                                </flux:table.cell>
 
-                                <flux:cell class="whitespace-nowrap">{{ $review->email }}</flux:cell>
-                                <flux:cell class="whitespace-nowrap">
+                                <flux:table.cell class="whitespace-nowrap">{{ $review->email }}</flux:table.cell>
+                                <flux:table.cell class="whitespace-nowrap">
                                     @if ($review->show)
                                         <flux:icon.check-badge />
                                     @endif
-                                </flux:cell>
-                                <flux:cell class="whitespace-nowrap">
+                                </flux:table.cell>
+                                <flux:table.cell class="whitespace-nowrap">
                                     {{ $review->created_at->format('m/j/y') }}
-                                </flux:cell>
-                                <flux:cell>
+                                </flux:table.cell>
+                                <flux:table.cell>
                                     <livewire:reviews.modal :$review />
-                                </flux:cell>
-                            </flux:row>
+                                </flux:table.cell>
+                            </flux:table.row>
                         @endforeach
-                    </flux:rows>
+                    </flux:table.rows>
                 </flux:table>
             @else
                 <div class="rounded-xl border py-12 text-center">

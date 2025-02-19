@@ -570,7 +570,7 @@ $saveListingNotes = function () {
             </script>
         @endscript
     </div>
-    <div class="z-100 absolute right-0 top-0 ml-0 hidden w-full bg-gradient-to-b from-white to-black/0 p-4 lg:block">
+    <div class="z-0 absolute right-0 top-0 ml-0 hidden w-full bg-linear-to-b from-white to-black/0 p-4 lg:block">
         <div class="flex justify-end gap-x-4">
             @if (auth()->user()->role == 'admin')
                 <flux:modal.trigger name="archive-listing">
@@ -663,10 +663,12 @@ $saveListingNotes = function () {
         <div>
             <flux:checkbox.group wire:model.live="form.categories">
                 @foreach ($form->getPossibleCategories() as $category)
+
                     <flux:checkbox
-                        :disabled="!in_array($category, $form->categories ?? []) && count($form->categories ?? []) == $maxCategories"
+                        :disabled="!in_array($category, $form->categories ?? []) && count($form->categories ?? []) >= $maxCategories"
                         value="{{ $category }}"
                         label="{{ $category }}"
+                        variant="default"
                     />
                 @endforeach
             </flux:checkbox.group>

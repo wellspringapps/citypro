@@ -181,7 +181,7 @@ $listings = computed(function(){
             <div class="col-span-3">
                 <flux:select wire:model="categories" variant="listbox" placeholder="Search by category..." multiple>
                     @foreach($businessCategories as $category)
-                        <flux:option>{{ $category }}</flux:option>
+                        <flux:select.option>{{ $category }}</flux:select.option>
                     @endforeach
                 </flux:checkbox.group>
             </div>
