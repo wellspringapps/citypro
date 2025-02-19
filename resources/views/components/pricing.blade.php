@@ -23,7 +23,7 @@
                         target="_blank"
                         href="https://calendar.app.google/zo5mZg5CePJU9kxr6"
                         aria-describedby="tier-basic"
-                        class="mt-10 block rounded-md bg-black px-3 py-2 text-center text-sm/6 font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                        class="mt-10 block rounded-md bg-black px-3 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                         Schedule your onboarding call
                     </a>
@@ -145,7 +145,7 @@
                         target="_blank"
                         href="https://calendar.app.google/zo5mZg5CePJU9kxr6"
                         aria-describedby="tier-essential"
-                        class="mt-10 block rounded-md bg-black px-3 py-2 text-center text-sm/6 font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                        class="mt-10 block rounded-md bg-black px-3 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                         Schedule your onboarding call
                     </a>

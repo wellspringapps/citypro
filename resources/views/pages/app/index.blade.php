@@ -4,7 +4,7 @@ use function Laravel\Folio\{name};
 name('portal.index');
 ?>
 
-<x-layouts.portal main-class-override="!p-0">
+<x-layouts.portal main-class-override="p-0!">
     @if (auth()->user()->listing)
         <livewire:listing-editor :listing="auth()->user()->listing" />
     @else
