@@ -184,6 +184,9 @@ $saveListingNotes = function () {
             <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                 <div>
                     <div x-data="{ edit: false }">
+                        <flux:card class="mb-4">
+                            To edit content double-click the label that corresponds to the information you would like to update.  
+                        </flux:card>
                         <h1 x-show="!edit" @dblclick="edit = true" class="text-3xl font-bold hover:text-blue-800 cursor-pointer">
                             {{ $form->title }}
                         </h1>
@@ -373,9 +376,6 @@ $saveListingNotes = function () {
             </div>
 
             <div>
-                <flux:card>
-                    To edit content double-click the label that corresponds to the information you would like to update.  
-                </flux:card>
                 <flux:card>
                     <h3 class="mb-4 text-xl font-semibold">Business Info</h3>
                     <div class="space-y-4">
