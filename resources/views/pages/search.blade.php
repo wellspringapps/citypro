@@ -20,10 +20,7 @@ $listings = computed(function(){
 
     if($this->search){
         $listingsSearch
-            ->where(function ($query) {
-               $query->whereLike('title', '%'. $this->search .'%')
-                     ->orWhereLike('name', '%John%');
-            });
+            ->whereLike('title', '%'. $this->search .'%');
     }
 
     if($this->categories){

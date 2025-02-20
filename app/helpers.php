@@ -154,6 +154,7 @@ function getBusinessCategories (){
         "IT Consulting",
         "IT Services & Support",
         "Jewelry & Watches",
+        "Junk Removal",
         "Language Schools",
         "Landscaping & Gardening",
         "Legal Services",
