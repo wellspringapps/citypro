@@ -184,7 +184,7 @@ $saveListingNotes = function () {
             <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                 <div>
                     <div x-data="{ edit: false }">
-                        <h1 x-show="!edit" @dblclick="edit = true" class="text-3xl font-bold hover:text-blue-600 cursor-pointer">
+                        <h1 x-show="!edit" @dblclick="edit = true" class="text-3xl font-bold hover:text-blue-800 cursor-pointer">
                             {{ $form->title }}
                         </h1>
                         <div x-show="edit" class="flex gap-4">
@@ -247,7 +247,7 @@ $saveListingNotes = function () {
             <div class="md:col-span-2">
                 <section class="mb-8">
                     <div x-data="{ editDesc: false }">
-                        <h2 class="mb-4 text-2xl font-semibold hover:text-blue-600 cursor-pointer" @dblClick="editDesc = !editDesc">About</h2>
+                        <h2 class="mb-4 text-2xl font-semibold hover:text-blue-800 cursor-pointer" @dblClick="editDesc = !editDesc">About</h2>
                         <div x-show="!editDesc" class="prose leading-relaxed text-gray-600">
                             {!! $form->description !!}
                         </div>
@@ -383,7 +383,7 @@ $saveListingNotes = function () {
                             <div class="flex items-start gap-3">
                                 <flux:icon.globe-alt />
                                 <div x-data="{ editWebsite: false }">
-                                    <h4 @dblClick="editWebsite = !editWebsite" class="font-medium hover:text-blue-600 cursor-pointer">Website</h4>
+                                    <h4 @dblClick="editWebsite = !editWebsite" class="font-medium hover:text-blue-800 cursor-pointer">Website</h4>
                                     <p x-show="!editWebsite" class="text-gray-600">{{ $form->website ?? '-' }}</p>
                                     <flux:input
                                         x-show="editWebsite"
@@ -398,7 +398,7 @@ $saveListingNotes = function () {
                         <div class="flex items-start gap-3">
                             <flux:icon.map-pin />
                             <div x-data="{ editLocation: false }">
-                                <h4 @dblClick="editLocation = !editLocation" class="font-medium hover:text-blue-600 cursor-pointer">Location</h4>
+                                <h4 @dblClick="editLocation = !editLocation" class="font-medium hover:text-blue-800 cursor-pointer">Location</h4>
                                 <p x-show="!editLocation" class="text-gray-600">{{ $form->address }}</p>
                                 <div x-show="editLocation" class="flex">
                                     <gmpx-api-loader
@@ -422,7 +422,7 @@ $saveListingNotes = function () {
                         <div class="flex items-start gap-3">
                             <flux:icon.globe-americas />
                             <div x-data="{ edit: false }">
-                                <h4 @dblclick="edit = !edit" class="font-medium hover:text-blue-600 cursor-pointer">Areas Served</h4>
+                                <h4 @dblclick="edit = !edit" class="font-medium hover:text-blue-800 cursor-pointer">Areas Served</h4>
                                 <p x-show="!edit" class="text-gray-600">{{ $form->areasServed ?? '-' }}</p>
                                 <flux:input
                                     x-show="edit"
@@ -440,7 +440,7 @@ $saveListingNotes = function () {
                                 <h4 class="font-medium">Hours</h4>
                                 <div class="text-sm text-gray-600">
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Monday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Monday</span>
                                         <span x-show="!edit">{{ $form->hours['monday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -451,7 +451,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Tuesday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Tuesday</span>
                                         <span x-show="!edit">{{ $form->hours['tuesday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -462,7 +462,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Wednesday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Wednesday</span>
                                         <span x-show="!edit">{{ $form->hours['wednesday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -473,7 +473,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Thursday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Thursday</span>
                                         <span x-show="!edit">{{ $form->hours['thursday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -484,7 +484,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Friday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Friday</span>
                                         <span x-show="!edit">{{ $form->hours['friday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -495,7 +495,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Saturday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Saturday</span>
                                         <span x-show="!edit">{{ $form->hours['saturday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -506,7 +506,7 @@ $saveListingNotes = function () {
                                         </div>
                                     </div>
                                     <div class="flex justify-between py-1" x-data="{ edit: false }">
-                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-600 cursor-pointer">Sunday</span>
+                                        <span @dblClick="edit = !edit" class="w-24 hover:text-blue-800 cursor-pointer">Sunday</span>
                                         <span x-show="!edit">{{ $form->hours['sunday'] ?? '' }}</span>
                                         <div x-show="edit" x-cloak>
                                             <flux:input
@@ -523,7 +523,7 @@ $saveListingNotes = function () {
                         <div class="flex items-start gap-3">
                             <flux:icon.phone />
                             <div x-data="{ editPhone: false }">
-                                <h4 @dblClick="editPhone = !editPhone" class="font-medium hover:text-blue-600 cursor-pointer">Phone</h4>
+                                <h4 @dblClick="editPhone = !editPhone" class="font-medium hover:text-blue-800 cursor-pointer">Phone</h4>
                                 <p x-show="!editPhone" class="text-gray-600">{{ $form->phone ?? '-' }}</p>
                                 <flux:input
                                     x-show="editPhone"
@@ -538,7 +538,7 @@ $saveListingNotes = function () {
                             <div class="flex items-start gap-3">
                                 <flux:icon.envelope />
                                 <div x-data="{ editEmail: false }">
-                                    <h4 @dblClick="editEmail = !editEmail" class="font-medium hover:text-blue-600 cursor-pointer">Email</h4>
+                                    <h4 @dblClick="editEmail = !editEmail" class="font-medium hover:text-blue-800 cursor-pointer">Email</h4>
                                     <p x-show="!editEmail" class="text-gray-600">{{ $form->email ?? '-' }}</p>
                                     <flux:input
                                         x-show="editEmail"
