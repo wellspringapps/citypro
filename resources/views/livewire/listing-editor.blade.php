@@ -234,9 +234,9 @@ $saveListingNotes = function () {
                         </div>
                     </div>
                 </div>
-                <flux:card>
+                <flux:card class="w-full md:w-1/3">
                     To edit content double-click the label that corresponds to the information you would like to update.  
-            </flux:card>
+                </flux:card>
             </div>
         </div>
     </div>
